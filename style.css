@@ -1,0 +1,29 @@
+/*
+Theme Name:   Mongabay
+Description:  Mongabay Theme (Child of ABOMB Theme)
+Author:       Mustard Design Agency
+Template:     abomb
+Version:      1.1.5
+Tags: black, white, light, dark, two-columns, three-columns, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready, accessibility-ready
+Text Domain:  abomb
+*/
+
+/* Theme style customization starts here 
+
+-------------------------------------------------------------- */
+/*@import url(http://fonts.googleapis.com/css?family=Quattrocento:400,700);*/
+
+
+@import url("css/general.css"); /* general and universal styling */
+@import url("css/sidebars.css"); /* sidebars specific */
+@import url("css/front.css"); /* front page specific */
+@import url("css/listing.css"); /* post listing specific */
+@import url("css/single.css"); /* single post specific */
+@import url("css/pages.css"); /* simple pages specifics */
+@import url("css/toploc.css"); /* topic / locations listing */
+@import url("css/forum.css"); /* wildtech forum */
+@import url("css/comments.css"); /* post listing specific */
+@import url("css/mobile.css"); /* mobile specific / responsive behaviour */
+@import url("css/map.css"); /* map css */
+@import url("css/soclogin.css"); /* social login css */
+@import url("css/ads.css"); /* ads css */

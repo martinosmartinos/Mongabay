@@ -1,0 +1,145 @@
+/* CSS Document */
+
+.mongaforum {
+	position: relative;
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+}
+
+.mongaforum-head {
+	margin-bottom: 20px;
+}
+
+.mongaforum-search {
+	position: absolute;
+	top: 10px;
+	right: 0px;
+}
+
+.mongaforum-search #search {
+	width: 200px;
+  background-color: #eee;
+}
+
+.mongaforum-search input[type="submit"] {
+	  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+.mongaforum table {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	  width: calc(100% + 90px);
+  margin-left: -45px;
+}
+
+.mongaforum table tr:nth-child(even) {
+	background-color: #f4f4f4;
+}
+
+.mongaforum h3 {
+	margin-top: 0px;
+	margin-left: -45px;
+	padding-left: 45px;
+	padding-top: 10px;
+	border-top: 5px solid #eee;
+	padding-right: 30px;
+	display: inline-block;
+}
+
+.mongaforum hr {
+	display: none;
+}
+
+.mongaforum .forum-topic-meta li {
+	  font-family: 'Roboto', sans-serif;
+  font-size: 13px !important;
+  font-weight: normal;
+  margin-bottom: 0px;
+}
+
+.mongaforum .forum-navigation, .forum-post .forum-post-meta {
+	font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  float: right;
+  margin-bottom: 10px;
+  background-color: #eee;
+  margin-right: -45px;
+  padding: 5px;
+  padding-right: 45px;
+  padding-left: 15px;
+}
+
+.forum-post-author {
+	padding-left: 45px !important;
+	  padding-bottom: 15px !important;
+  padding-top: 10px !important;
+}
+
+.page-template-template-simple .entry-content-text .forum-post-author p {
+	font-family: 'Roboto', sans-serif !important;
+  font-size: 14px !Important;
+  color: #690 !important;
+}
+
+.page-template-template-simple .entry-content-text .mongaforum-head  p {
+	  font-size: 16px !important;
+  max-width: 500px;
+  line-height: 22px;
+}
+
+
+.mongaforum .forum-post td:nth-child(even) p {
+	font-size: 16px !important;
+}
+
+.mongaforum tr.forum-post {
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+
+#forum-topic-reply-form th {
+	display: none;
+}
+
+#forum-topic-reply-form fieldset {
+	padding: 0px;
+}
+
+#forum-topic-reply-form table {
+	background: #eee;
+}
+
+#forum-topic-reply-form textarea {
+  width: 90% !important;
+  margin: 10px 5%;
+}
+
+.mongaforum form[name="new_topic"] fieldset {
+	padding: 0px;
+}
+
+.mongaforum form[name="new_topic"] {
+	background: #eee;
+	padding: 30px 45px;
+	border-radius: 10px;
+}
+
+.mongaforum form[name="new_topic"] table {
+  margin: 0px;
+  width: 100%;
+}
+
+.mongaforum form[name="new_topic"] table tr, .mongaforum form[name="new_topic"] table th, .mongaforum form[name="new_topic"] table td {
+	border: 0px !important;
+	background: none !Important;
+}
+
+.mongaforum form[name="new_topic"] table th {
+  vertical-align: top;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+}
+

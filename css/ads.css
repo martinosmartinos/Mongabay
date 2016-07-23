@@ -1,0 +1,64 @@
+/* CSS Document */
+
+.mongaad-wrapper {
+	/* display: none; */
+}
+
+.mongaad-wrapper-home-middle {
+	float: right;
+    margin-top: -40px;
+    margin-bottom: 20px;
+}
+
+.above-article-ad-cont {
+	  float: left;
+  margin-right: 25px;
+  margin-bottom: 15px;
+  display: none;
+}
+
+.mongaad-wrapper-news-bottom {
+  float: right;
+  margin-top: -35px;
+}
+
+
+.mongaad-wrapper-article-below-1 {
+  float: left;
+  width: 50%;
+}
+
+.mongaad-wrapper-images-listing-1,
+.mongaad-wrapper-images-listing-2 {
+	float: right;
+	clear: both;
+}
+
+.images-galleries-ads .mongaad-wrapper-images-listing-1,
+.images-galleries-ads .mongaad-wrapper-images-listing-2 {
+	  float: left;
+  width: 50%;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  clear: none;
+  text-align: center;
+}
+
+.images-galleries-ads .mongaad-wrapper-images-listing-1 > div,
+.images-galleries-ads .mongaad-wrapper-images-listing-2 > div {
+	display: inline-block;
+}
+
+.single-image .mongaad-wrapper-images-listing-1,
+.single-image .mongaad-wrapper-images-listing-2 {
+	margin-top: -55px;
+}
+
+.mongaad-wrapper-image-under > div {
+	margin-top: 25px;
+}
+
+.mongaad-wrapper-image-buy {
+	  margin-left: 15px;
+  margin-top: -20px;
+}

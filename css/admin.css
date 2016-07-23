@@ -1,0 +1,9 @@
+/* CSS Document */
+
+body.wp-admin .wp-list-table td.post-title p {
+	display: none;
+}
+
+#setting-error-tgmpa, .redux-message {
+	display: none !important;
+}

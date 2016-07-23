@@ -1,0 +1,220 @@
+/* CSS Document */
+body.subdomain-map .header-wrap {
+	 border-bottom: 3px solid #1c4d77;
+}
+body.subdomain-map .main-header, body.subdomain-map  .menu-form {
+	background: #316189;
+}
+
+body.subdomain-map .main-header .bombnav > li > a, 
+body.subdomain-map .main-header .no-menu > a, 
+body.subdomain-map .menu-reg-log.righttog a, 
+body.subdomain-map .menu-reg-log.menu-search i, 
+body.subdomain-map .menu-form .close-search, 
+body.subdomain-map .menu-form .search-box input[type=text], 
+body.subdomain-map .main-header .logo a {
+	line-height: 46px;
+}
+
+body.subdomain-map .main-header .logo {
+	padding: 0px;
+}
+
+body.subdomain-map .main-header .logo .logo-img {
+	margin-top: 4px;
+}
+
+body.subdomain-map, body.subdomain-map .layout-wrap, #map-container, #map-canvas {
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	min-height: 100%;
+}
+
+.map-html {
+	height: 100% !Important;
+}
+
+.mapcluster img {
+	clip: auto !important;
+	transform: scale(0.5);
+}
+
+#map-container {
+	position: relative;
+}
+
+#mongamap-infobox {
+	display: none;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	width: 300px;
+	min-height: 100px;
+	background-color: white;
+	-webkit-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.15);
+  	-moz-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.15);
+  	box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.15);
+	border-radius: 6px;
+	padding: 20px;
+	border-bottom: 4px solid #316189;
+}
+
+#mongamap-infobox-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+#mongamap-infobox-load {
+	width: 64px;
+	height: 39px;
+	margin: 20px auto;
+	background-image: url('../img/mappreloader.gif');
+	transform: scale(0.5);
+}
+
+#mongamap-infobox:after {
+	content: '';
+	position: absolute;
+	top: -18px;
+	left: -20px;
+	width: 50px;
+	height: 50px;
+	background-size: 50px 50px;
+	background-image: url('../img/mapworld.png');
+	pointer-events: none;
+}
+
+#mongamap-infobox.loaded #mongamap-infobox-load {
+	display: none;
+}
+
+#mongamap-infobox-data {
+	display: none;
+}
+
+#mongamap-infobox.loaded #mongamap-infobox-data {
+	display: block;
+}
+
+
+#mongamap-infobox img {
+	  width: 100%;
+  max-height: 180px;
+  margin-bottom: 5px;
+  margin-top: 10px
+}
+
+.mongamap-infobox-type-images img {
+  max-width: 100%;
+  margin: 0px auto;
+  width: auto !important;
+}
+
+
+#mongamap-infobox-location {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: uppercase;
+  color: #d4983e;
+    min-width: 10px;
+  min-height: 24px
+}
+
+#mongamap-infobox-date {
+	  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: #666;
+  position: relative;
+  top: -25px;
+  text-align: right;
+}
+
+
+#mongamap-infobox-summary {
+  font-size: 16px;
+  line-height: 22px;
+  margin-top: -20px;
+}
+
+
+#mongamap-infobox-more {
+	  float: right;
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+#mongamap-switch {
+	  position: absolute;
+  border-radius: 5px;
+  top: 20px;
+  left: 90px;
+  background-color: #336287;
+  border-bottom: 4px solid #1f4e75;
+  -webkit-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.15);
+  	-moz-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.15);
+  	box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.15);
+}
+
+#mongamap-switch a {
+	  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  line-height: 33px;
+  height: 30px;
+  display: inline-block;
+  padding: 0px 15px;
+  cursor: pointer;
+}
+
+#mongamap-switch a.active {
+	background-color: #c45d97;
+	border-radius: 5px;
+}
+
+/* Widget */
+.widget_mongabay-map-widget #map-canvas {
+	height: 200px;
+	width: 100%;
+}
+
+#widgetmap-nav {
+	  border-bottom: 4px solid #b77f22;
+  border-radius: 5px;
+  background-color: #d4993f !important;
+  display: inline-block;
+  position: relative;
+  top: -17px;
+  padding: 4px 10px;
+  left: 10px;
+}
+
+#widgetmap-nav > div {
+	cursor: pointer;
+  width: 30px;
+  background-position: center;
+}
+
+.widget_mongabay-map-widget #map-canvas .gm-style > div:nth-child(2),
+.widget_mongabay-map-widget #map-canvas .gm-style .gmnoprint {
+	display: none;
+}
+
+#widgetmap-button {
+  position: relative;
+  top: -17px;
+  right: 10px;
+}
+
+.widget_mongabay-map-widget #mongamap-infobox-title {
+	margin-top: -24px;
+}
+

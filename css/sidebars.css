@@ -1,0 +1,370 @@
+/* CSS Document */
+
+aside.right-sidebar {
+	min-height: 100%;
+	display: block;
+	
+	margin-bottom: -99999px !important;
+  	padding-bottom: 99999px !important;
+}
+
+
+/* Fonts */
+.widgettitle
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+.textwidget {
+  font-family: Roboto;
+  font-size: 14px;
+}
+#widget-inner
+{
+    font-family: 'Robot', sans-serif;
+    font-size: 14px !important;
+}
+
+#widget-inner em
+{
+    font-style: normal;
+}
+
+#widget-inner p a
+{
+    color: #316189;
+}
+
+.widget_mongabay-donate-widget #widget-inner em
+{
+    text-decoration: underline;
+
+    color: #316189;
+}
+
+/* Published Under Widget */
+#mongabay-license-widget-2,
+.widget_mongabay-license-widget
+{
+    position: absolute;
+    z-index: 20;
+      right: -340px;
+  width: 340px;
+    height: 56px;
+    margin-bottom: 0;
+    padding: 0;
+
+    background-color: #690;
+}
+
+.widget_mongabay-license-widget
+{
+    right: -370px;
+
+    width: 370px;
+}
+
+#mongabay-license-widget-2 .licence-widget-left,
+.widget_mongabay-license-widget .licence-widget-left
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    line-height: 14px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 208px;
+    height: 56px;
+    padding-top: 16px;
+    padding-right: 8px;
+
+    text-align: right;
+
+    color: white;
+}
+
+#mongabay-license-widget-2 .licence-widget-left span,
+.widget_mongabay-license-widget .licence-widget-left span
+{
+    font-size: 14px;
+
+    display: block;
+}
+
+#mongabay-license-widget-2 .licence-widget-left b,
+.widget_mongabay-license-widget .licence-widget-left b
+{
+    font-weight: normal;
+}
+
+#mongabay-license-widget-2 .license-widget-right,
+.widget_mongabay-license-widget .license-widget-right
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 120px;
+    height: 56px;
+
+    background-color: #222;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.widget_mongabay-license-widget .license-widget-right
+{
+    width: 156px;
+}
+
+/* Most Read Widget */
+.widget_reedwanwidgets__block9 h4
+{
+    margin-bottom: 6px;
+}
+
+.widget_reedwanwidgets__block9 ul
+{
+    list-style: none;
+}
+
+/*.widget_reedwanwidgets__block9 ul li
+{
+    font-size: 11px;
+    font-weight: normal !important;
+
+    position: relative;
+
+    width: 270px;
+    margin: 0 !important;
+    margin-top: 15px !important;
+    padding: 0 18px 4px 0 !important;
+
+    border: none;
+    border-bottom: 1px solid #eeeef0;
+}*/
+
+.sidebar .widget ul > li {
+	width: auto;
+  border-bottom: 1px solid white;
+  padding-bottom: 7px;
+  margin-bottom: 7px;
+}
+
+
+.widget_reedwanwidgets__block9 ul li .thumb-icon-list
+{
+    position: absolute;
+    top: 10%;
+    right: 0;
+
+    display: block;
+}
+
+.widget_reedwanwidgets__block9 ul li:last-child
+{
+    border-bottom: none;
+}
+
+body.single-post .widget_reedwanwidgets__block9 ul li
+{
+    border-bottom: none;
+	line-height: 15px;
+	margin-bottom: 3px;
+}
+
+body.single-post .widget_reedwanwidgets__block9 ul li * {
+	font-size: 13px !important;
+}
+
+.block-nine.ordered ul li .list-count {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+}
+
+.widget_reedwanwidgets__block9 ul li a
+{
+    color: #000 !important;
+}
+
+
+/* Posts By Location */
+.widget_mongabay-filter-location-widget #widget-inner,
+.widget_mongabay-filter-topic-widget #widget-inner
+{
+    position: relative;
+
+    padding-bottom: 30px;
+
+    list-style: none;
+
+    -webkit-columns: 2;
+       -moz-columns: 2;
+         -o-columns: 2;
+            columns: 2;
+}
+
+.widget_mongabay-filter-location-widget .widget-term,
+.widget_mongabay-filter-topic-widget .widget-term
+{
+    font-family: 'Roboto', sans-serif;
+  line-height: 170%;
+  display: list-item;
+  color: #1c344c !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.plus-link
+{
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+
+    display: block;
+
+    color: #316189 !important;
+}
+
+.plus-link:before
+{
+    font-size: 15px;
+    font-weight: bold;
+
+    position: absolute;
+    left: -16px;
+
+    display: block;
+
+    padding-right: 6px;
+
+    content: '+';
+    text-decoration: none;
+}
+
+/* Our Mission */
+.widget_mongabay-newsletter-widget .form-element {
+	position: relative;
+}
+
+.widget_mongabay-newsletter-widget label {
+	font-size: 0px;
+	width: 26px;
+	height: 23px;
+	pointer-events: none;
+	position: absolute;
+	left: 5px;
+	top: 0px;
+	display: block;
+	background: url('../img/ico-mail-blue.png') no-repeat center center;
+}
+
+.widget_mongabay-newsletter-widget input
+{
+    margin-top: -22px;
+    margin-right: 10px;
+}
+
+.widget_mongabay-newsletter-widget #subscribe-mail {
+	padding-left: 35px !important;
+	letter-spacing: 0px !Important;
+}
+ 
+/* Trending Images */
+.widget_mongabay-photos-widget .widgettitle
+{
+    margin-bottom: 18px;
+}
+
+.trending-image-location
+{
+    font-family: 'EB Garamond', serif;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 110%;
+
+    float: left;
+
+    width: 53%;
+
+    text-transform: uppercase;
+
+    color: #d4983e;
+}
+
+.trending-image-title
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 120%;
+
+    float: left;
+
+    width: 53%;
+
+    color: #222;
+}
+
+
+.treding-image-item
+{
+    display: block;
+    overflow: hidden;
+
+    margin-bottom: 10px;
+    padding-left: 2px;
+}
+
+.treding-image-item div:first-child
+{
+    position: relative;
+
+    float: left;
+    overflow: hidden;
+
+    width: 130px;
+    margin-right: 10px;
+
+    background-color: #eaeaea;
+}
+
+.treding-image-item div img
+{
+    margin: 0 auto;
+}
+
+/* Further Info Widget */
+.widget_mongabay-furtherinfo-widget li a
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: normal !important;
+
+    color: #1c4d77 !important;
+}
+
+.widget_mongabay-furtherinfo-widget ul li
+{
+    list-style-image: url('../../../uploads/2015/06/icon-list-arrow.png');
+
+    border-bottom: none !important;
+}
+
+.widget_mongabay-furtherinfo-widget ul
+{
+    margin-left: 14px;
+}
+
+.left-sidebar .widget p {
+	font-size: 13px;
+}

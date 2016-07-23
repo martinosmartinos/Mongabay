@@ -1,0 +1,243 @@
+/* CSS Document */
+body.page-id-13387 aside,
+body.page-id-13389 aside {
+	background-color: #fff;
+}
+
+body.page-id-13387 #reedwanwidgets__block9-18,
+body.page-id-13389 #reedwanwidgets__block9-18 {
+	border-bottom-color: #d3d3d3;
+}
+
+body.page-id-13387 #mongabay-filter-location-widget-2,
+body.page-id-13389 #mongabay-filter-location-widget-2,
+body.page-id-13387 #mongabay-filter-topic-widget-2,
+body.page-id-13389 #mongabay-filter-topic-widget-2 {
+	display: none;
+}
+
+body.page-id-13387 main,
+body.page-id-13389 main {
+	padding-top: 0;
+}
+
+body.page-id-13387 h1.entry-title ,
+body.page-id-13389 h1.entry-title {
+	font-size: 24px;
+	font-family: 'EB Garamond', serif;
+	font-weight: bold;
+	color: #222;
+	text-transform: uppercase;
+
+	margin-top: 20px;
+	margin-bottom: 4px;
+}
+
+body.page-id-13387 .entry-header,
+body.page-id-13389 .entry-header {
+	margin-bottom: 0px;
+}
+
+body.page-id-13387 h1.entry-title em,
+body.page-id-13389 h1.entry-title em {
+	color: #d4983e;
+	font-style: normal;
+}
+
+body.page-id-13387 h5,
+body.page-id-13389 h5 {
+	font-size: 21px;
+	font-family: 'EB Garamond', serif;
+	font-style: italic;
+	font-weight: normal;
+}
+
+
+body.page-id-13387 .section > h4,
+body.page-id-13389 .section > h4 {
+	font-size: 18px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+
+	margin-top: 20px;
+}
+
+body.page-id-13387 h4 i,
+body.page-id-13389 h4 i {
+	font-family: 'EB Garamond', serif;
+	float: right;
+	font-weight: normal;
+	font-style: italic;
+	text-transform: none;
+}
+
+.tag_cloud a {
+	color: #d4983e !important;
+
+	margin-top: 25px;
+}
+
+body.page-id-13387 .section-other,
+body.page-id-13389 .section-other {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+
+	border-top: 1px solid #d3d3d3;
+	border-bottom: 1px solid #d3d3d3;
+
+	position: relative;
+}
+
+body.page-id-13387 .section-other h6,
+body.page-id-13389 .section-other h6 {
+	font-size: 15px;
+	color: #222;
+	text-transform: uppercase;
+	text-align: right;
+}
+ 
+body.page-id-13387 .section-other p,
+body.page-id-13389 .section-other p {
+	font-size: 12px;
+	font-family: 'EB Garamond', sans-serif;
+
+	margin-bottom: 0;
+
+	text-align: right;
+}
+
+body.page-id-13389 .section-other h6,
+body.page-id-13389 .section-other p {
+	padding-right: 170px;
+}
+
+body.page-id-13387 .section-other h6,
+body.page-id-13387 .section-other p {
+	padding-right: 194px;
+}
+
+body.page-id-13387 .section-other p a,
+body.page-id-13389 .section-other p a {
+	color: #316189;
+}
+
+
+body.page-id-13387 .section-other .button,
+body.page-id-13389 .section-other .button {
+	position: absolute;
+	top: 28px;
+	right: 0;
+
+	color: #fff !important;
+}
+
+.button-topic {
+	padding-left: 40px !important;
+	background-image: url("../../../uploads/2015/06/icon-comment.png") !important;
+}
+
+.letterlist {
+	margin-bottom: -30px;
+	display: table;
+	width: 100%;
+}
+
+.letterlist a {
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+	color: #316189 !important;
+	  display: table-cell;
+
+}
+
+.letterlist a:hover {
+	color: #222 !important;
+	text-decoration: none;
+}
+
+.letter-boxes {
+	margin-top: -30px;
+}
+
+.letter-item {
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	-o-column-count: 2;
+	column-count: 2;
+
+	-webkit-column-width: 50%;
+	-moz-column-width: 50%;
+	-o-column-width: 50%;
+	column-width: 50%;
+
+	  padding-top: 160px;
+  position: relative;
+  margin-bottom: -110px;
+    width: 100%;
+}
+
+.letter-itself {
+	font-size: 37px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	color: #222;
+
+	position: absolute;
+	top: 120px;
+	left: 0;
+}
+
+.taxonomy-item {
+	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
+	text-transform: uppercase;
+
+	border-bottom: 1px solid #d3d3d3;
+	line-height: 30px;
+	height: 30px;
+}
+
+.taxonomy-item:last-child {
+	border-bottom: none;
+}
+
+.taxonomy-item a {
+	color: #222 !important;
+}
+
+.taxonomy-item a:hover {
+	text-decoration: none;
+	color: #316189 !important;
+}
+
+.taxonomy-item a:first-child {
+	max-width: 220px;
+	display: inline-block;
+
+	white-space: nowrap;
+
+	-ms-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+
+	overflow: hidden;
+}
+
+.taxonomy-item .rss-link {
+	float: right;
+	font-size: 0 !important;
+	display: block;
+
+	width: 13px;
+	height: 13px;
+
+	background-image: url('../../../uploads/2015/07/rss-icon.png');
+	-webkit-background-size: contain;
+	background-size: contain;
+
+	position: relative;
+	top: 8px;
+}

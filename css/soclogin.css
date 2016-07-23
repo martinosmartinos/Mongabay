@@ -1,0 +1,74 @@
+/* SOCIAL LOGIN */
+
+.wp-social-login-widget {
+	padding: 20px;
+}
+
+.wp-social-login-connect-with {
+	display: none;
+}
+
+.wp-social-login-provider-list {
+	padding: 0px;
+}
+
+.wp-social-login-provider {
+	width: 32%;
+margin: 0px 1px;
+font-family: 'Roboto', Roboto, sans-serif;
+font-weight: bold;
+display: inline-block;
+height: 40px;
+text-align: center;
+color: white;
+text-transform: uppercase;
+letter-spacing: 0.7px;
+line-height: 40px;
+font-size: 12px;
+background: black;
+}
+
+.wp-social-login-provider:hover {
+	background: #669900;
+}
+
+.wp-social-login-provider-facebook {
+	background-color: #3b5997;
+	border-color: #3b5997;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+	
+
+.wp-social-login-provider-twitter {
+	background-color: #007bb6;
+	border-color: #007bb6;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+	
+.wp-social-login-provider-google {
+	background-color: #de4b39;
+	border-color: #de4b39;
+}
+
+.sociallogin-text {
+	font-family: 'Roboto', Roboto, sans-serif;
+	color: #333;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 0.7px;
+	font-size: 12px;
+}
+
+.sociallogin-text-pre {
+	margin-top: -20px;
+	margin-bottom: -10px;
+}
+
+.sociallogin-text-post {
+	margin-top: -10px;
+	margin-bottom: -20px;	
+}
+
+
