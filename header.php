@@ -10,50 +10,54 @@
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
 <head>
-<meta charset="<?php bloginfo( 'charset' );?>" />
-<?php if(rd_options('abomb_responsive') == 1): ?>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-<?php endif; ?>
-<?php
-$c1=get_query_var('nc1');
-$c2=get_query_var('nc2');
-//var_dump($header_title);
-?>
-<?php if ( ! function_exists( '_wp_render_title_tag' ) ): ?>
-<title>
-<?php wp_title( '|', true, 'right' ); ?>
-</title>
-<?php endif; ?>
-<link rel="pingback" href="<?php esc_url(bloginfo( 'pingback_url' )); ?>" />
-<?php if(rd_options_array('abomb_favicon','url')): ?>
-<link rel="shortcut icon" href="<?php echo esc_url(rd_options_array('abomb_favicon','url')); ?>" type="image/x-icon" />
-<?php endif; ?>
-<?php if(rd_options_array('abomb_iphone_icon','url')): ?>
-<link rel="apple-touch-icon-precomposed" href="<?php echo esc_url(rd_options_array('abomb_iphone_icon','url')); ?>">
-<?php endif; ?>
-<?php if(rd_options_array('abomb_iphone_icon_retina','url')): ?>
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo esc_url(rd_options_array('abomb_iphone_icon_retina','url')); ?>">
-<?php endif; ?>
-<?php if(rd_options_array('abomb_ipad_icon','url')): ?>
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo esc_url(rd_options_array('abomb_ipad_icon','url')); ?>">
-<?php endif; ?>
-<?php if(rd_options_array('abomb_ipad_icon_retina','url')): ?>
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo esc_url(rd_options_array('abomb_ipad_icon_retina','url')); ?>">
-<?php endif; ?>
-<?php wp_head(); ?>
+	<meta charset="<?php bloginfo( 'charset' );?>" />
+	<?php if(rd_options('abomb_responsive') == 1): ?>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<?php endif; ?>
+	<?php if ( ! function_exists( '_wp_render_title_tag' ) ): ?>
+	<title>
+	<?php wp_title( '|', true, 'right' ); ?>
+	</title>
+	<?php endif; ?>
+	<link rel="pingback" href="<?php esc_url(bloginfo( 'pingback_url' )); ?>" />
+	<?php if(rd_options_array('abomb_favicon','url')): ?>
+	<link rel="shortcut icon" href="<?php echo esc_url(rd_options_array('abomb_favicon','url')); ?>" type="image/x-icon" />
+	<?php endif; ?>
+	<?php if(rd_options_array('abomb_iphone_icon','url')): ?>
+	<link rel="apple-touch-icon-precomposed" href="<?php echo esc_url(rd_options_array('abomb_iphone_icon','url')); ?>">
+	<?php endif; ?>
+	<?php if(rd_options_array('abomb_iphone_icon_retina','url')): ?>
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo esc_url(rd_options_array('abomb_iphone_icon_retina','url')); ?>">
+	<?php endif; ?>
+	<?php if(rd_options_array('abomb_ipad_icon','url')): ?>
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo esc_url(rd_options_array('abomb_ipad_icon','url')); ?>">
+	<?php endif; ?>
+	<?php if(rd_options_array('abomb_ipad_icon_retina','url')): ?>
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo esc_url(rd_options_array('abomb_ipad_icon_retina','url')); ?>">
+	<?php endif; ?>
+	<?php wp_head(); ?>
+	<?php
+		if (mongabay_sub() == 'news') {
+			echo "<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '1222207174458407');fbq('track', \"PageView\");</script><noscript><img height=\"1\" width=\"1\" style=\"display:none\" src=\"https://www.facebook.com/tr?id=1222207174458407&ev=PageView&noscript=1\" /></noscript>";
+		}
+		if (mongabay_sub() == 'es') {
+			echo "<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '1764183893863049');fbq('track', \"PageView\");</script><noscript><img height=\"1\" width=\"1\" style=\"display:none\" src=\"https://www.facebook.com/tr?id=1764183893863049&ev=PageView&noscript=1\" /></noscript>";
+		}
+	?>
 </head>
 
 <?php if (mongabay_sub()=='images' || is_page_template( 'templates/template-simple.php' )) $GLOBALS['sidebar_layout'] = 'right'; ?>
 <body <?php body_class(array($GLOBALS['responsive'],'subdomain-'.mongabay_sub())); ?> itemscope="itemscope" itemtype="<?php echo rd_ssl(); ?>://schema.org/WebPage"<?php echo $GLOBALS['theme_bg']; ?>>
 	<?php if (mongabay_is_legacy_post()): ?>
-		<div id="fb-root"></div> 
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4&appId=1649584218610569";
-		  fjs.parentNode.insertBefore(js, fjs);
+		<div id="fb-root"></div>
+		<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4&appId=1649584218610569";
+			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 		</script>
 	<?php endif; ?>
