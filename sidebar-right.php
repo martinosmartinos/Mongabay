@@ -30,7 +30,7 @@
 				else{
 					if ( is_single() && !is_woocommerce()){
 						if (is_active_sidebar( 'single-right-sidebar' )) {
-							echo '<div class="licence-widget-left"><span>'.__('Published under').'</span><b>'.__('Creative Commons BY-NC-ND').'</b></div><div class="license-widget-right" style="background-image: url(\'/wp-content/themes/mongabay/img/license_cc.jpg\')"></div>';
+							echo '<div class="licence-widget-left"><span>'.__('Published under').'</span><b>'.__('Creative Commons BY-NC-ND').'</b></div><a href="https://news.mongabay.com/copyright/creative-commons-by-nc-nd/"><div class="license-widget-right" style="background-image: url(\'/wp-content/themes/mongabay/img/license_cc.jpg\')"></div></a>';
 							dynamic_sidebar( 'single-right-sidebar' );
 						}
 						else {
