@@ -256,9 +256,9 @@ n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.p
 			if (!empty($sline)) echo __('Mongabay Series','mongabay-theme').': ',implode(', ',$sline);
 		?>
 		<?php
-			$featured = get_post_meta(get_the_ID(),"featured_as",true);
+			$featured = get_post_meta(get_the_ID(),"featured_as");
 			$translator = get_post_meta(get_the_ID(),"translated_by",true);
-			if (get_post_format() =='aside' && $featured == 'featured') {
+			if (get_post_format() =='aside' && in_array('featured', $featured)) {
 				echo '<div class="title-outer"><div class="title-inner"><span>'.content_single_title().'</span>';
 				if (!empty($translator) && is_array($translator)) {
 					echo '<div class="translatorline"><span>'.__('Translated by','mongabay-theme').'</span> <a href="'.mongabay_url('author',$translator[slug]).'">'.$translator[name].'</a></div>';
