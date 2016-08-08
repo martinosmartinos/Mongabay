@@ -117,12 +117,12 @@ if ($sec == 'list') {
 }
 
 /* Set custom title */
-if (!empty($htitle)) {
-	global $header_title;
-	$header_title = $htitle;
-	$htitle_func =  function($title, $sep) { global $header_title; return $header_title.' '.$sep.' '.get_bloginfo( 'name', 'display' ); };
-	add_filter( 'wp_title', $htitle_func, 10, 2 );
-}
+// if (!empty($htitle)) {
+// 	global $header_title;
+// 	$header_title = $htitle;
+// 	$htitle_func =  function($title, $sep) { global $header_title; return $header_title.' '.$sep.' '.get_bloginfo( 'name', 'display' ); };
+// 	add_filter( 'wp_title', $htitle_func, 10, 2 );
+// }
 
 ?>
 <?php get_header(); ?>

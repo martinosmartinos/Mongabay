@@ -11,30 +11,50 @@
 <!--<![endif]-->
 <head>
 	<meta charset="<?php bloginfo( 'charset' );?>" />
+
 	<?php if(rd_options('abomb_responsive') == 1): ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<?php endif; ?>
-	<?php if ( ! function_exists( '_wp_render_title_tag' ) ): ?>
-	<title>
-	<?php wp_title( '|', true, 'right' ); ?>
-	</title>
-	<?php endif; ?>
+
+	<title><?php
+	$tax1 = get_query_var('nc1');
+	$tax2 = get_query_var('nc2');
+		if ($tax1 && !$tax2) {
+			echo ucfirst($tax1).' News';
+		}
+		elseif ($tax1 && $tax2) {
+			echo ucfirst($tax2).' and '.ucfirst($tax1).' News';
+		}
+		elseif (!function_exists('_wp_render_title_tag')) {
+			wp_title('');
+		}
+		else {
+			wp_title( '-', true, 'right' );
+		}
+	?></title>
+
 	<link rel="pingback" href="<?php esc_url(bloginfo( 'pingback_url' )); ?>" />
+
 	<?php if(rd_options_array('abomb_favicon','url')): ?>
 	<link rel="shortcut icon" href="<?php echo esc_url(rd_options_array('abomb_favicon','url')); ?>" type="image/x-icon" />
 	<?php endif; ?>
+
 	<?php if(rd_options_array('abomb_iphone_icon','url')): ?>
 	<link rel="apple-touch-icon-precomposed" href="<?php echo esc_url(rd_options_array('abomb_iphone_icon','url')); ?>">
 	<?php endif; ?>
+
 	<?php if(rd_options_array('abomb_iphone_icon_retina','url')): ?>
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo esc_url(rd_options_array('abomb_iphone_icon_retina','url')); ?>">
 	<?php endif; ?>
+
 	<?php if(rd_options_array('abomb_ipad_icon','url')): ?>
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo esc_url(rd_options_array('abomb_ipad_icon','url')); ?>">
 	<?php endif; ?>
+
 	<?php if(rd_options_array('abomb_ipad_icon_retina','url')): ?>
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo esc_url(rd_options_array('abomb_ipad_icon_retina','url')); ?>">
 	<?php endif; ?>
+
 	<?php wp_head(); ?>
 </head>
 
@@ -52,33 +72,35 @@
 		}(document, 'script', 'facebook-jssdk'));
 		</script>
 	<?php endif; ?>
+
 	<?php if (mongabay_sub()=='kidsnews'): ?>
 		<div id="kidsnews-bg"></div>
 	<?php endif; ?>
+
 <?php if ( $GLOBALS['top_header'] == 1 ): ?>
 <div class="top-wrap deskpadview clearfix">
   <div class="boxed clearfix">
     <?php if ( has_nav_menu( 'top_menu' ) && $GLOBALS['top_nav'] == 1 ): ?>
     <nav role="navigation" class="top-menu el-left" itemscope="itemscope" itemtype="<?php echo rd_ssl(); ?>://schema.org/SiteNavigationElement">
-      <?php 
-						$arg = array(
-							'container' =>false, 
-							'theme_location' => 'top_menu', 
-							'menu_id' => 'topnav',
-							'menu_class' => 'topnav',
-							'depth' => 1,
-							'walker' => new rd_mega_walker()
-						);
-						wp_nav_menu( $arg );
-					?>
+	<?php 
+		$arg = array(
+			'container' =>false, 
+			'theme_location' => 'top_menu', 
+			'menu_id' => 'topnav',
+			'menu_class' => 'topnav',
+			'depth' => 1,
+			'walker' => new rd_mega_walker()
+		);
+		wp_nav_menu( $arg );
+	?>
     </nav>
     <?php endif; ?>
     <?php if ( $GLOBALS['top_news'] == 1 && $GLOBALS['top_nav'] == 0): ?>
     <?php
-					$title = '';
-					if (rd_options( 'abomb_news_title')) { $title = rd_options( 'abomb_news_title'); }
-					$icon = "right"; if (is_rtl()) { $icon= 'left';}
-				?>
+		$title = '';
+		if (rd_options( 'abomb_news_title')) { $title = rd_options( 'abomb_news_title'); }
+		$icon = "right"; if (is_rtl()) { $icon= 'left';}
+	?>
     <div class="headline-news-wrap el-left">
       <?php if($title != ''): ?>
       <div class="headline-news-title el-left"><?php echo esc_attr($title); ?><i class="fa fa-chevron-<?php echo $icon; ?>"></i></div>

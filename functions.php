@@ -106,19 +106,19 @@ if (($_SERVER['REQUEST_URI']=='/' || !$_SERVER['REQUEST_URI']) && !($sub=='www' 
 
 
 /* NICE TITLE */
-add_filter( 'wp_title', 'mongabay_wp_title', 10, 2 );
-function mongabay_wp_title( $title, $sep ) {
-	if (is_front_page())
-		return __("Mongabay Environmental News",'Mongabay');
-	elseif (is_single() || is_page()) 
-		return get_the_title();
-	elseif (get_query_var('nc1') !=='' || get_query_var('nc2') !==''){
-		$taxname = get_query_var('nc1');
-		//var_dump($taxname);
-		return $taxname.'news';
-	}
-	return $title.'news';
-}
+// add_filter( 'wp_title', 'mongabay_wp_title', 10, 2 );
+// function mongabay_wp_title( $title, $sep ) {
+// 	if (is_front_page())
+// 		return __("Mongabay Environmental News",'Mongabay');
+// 	elseif (is_single() || is_page()) 
+// 		return get_the_title();
+// 	elseif (get_query_var('nc1') !=='' || get_query_var('nc2') !==''){
+// 		$taxname = get_query_var('nc1');
+// 		//var_dump($taxname);
+// 		return $taxname.'news';
+// 	}
+// 	return $title.'news';
+// }
 
 /* Parallax JS */
 if (get_post_format() =='aside'){
