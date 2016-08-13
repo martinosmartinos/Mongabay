@@ -1215,13 +1215,19 @@ body.subdomain-kids
 {
     background-color: #4b4b4b;
 }
-.subdomain-wildtech .header-wrap
+.subdomain-wildtech .header-wrap, .wildtech .header-wrap
 {
     border-bottom: none;
 }
 .subdomain-wildtech .main-header
 {
     background-color: #343434;
+}
+.wildtech .main-header {
+    background: #343434;
+}
+.wildtech .header-tags, .wildtech .sharebox {
+    background: #4b4b4b;
 }
 .single-format-video .header-meta-article-type
 {

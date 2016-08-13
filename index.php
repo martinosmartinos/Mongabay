@@ -1,181 +1,187 @@
 <?php
-$sec = get_query_var('section');
-$c1 = get_query_var('nc1');
-$c2 = get_query_var('nc2');
-$classes = $title = $head = "";
-$tax_query = $meta_query = array();
-$sub = mongabay_sub();
-if (!$sec) $sec = 'list';
+	$sec = get_query_var('section');
+	$c1 = get_query_var('nc1');
+	$c2 = get_query_var('nc2');
+	$classes = $title = $head = "";
+	$tax_query = $meta_query = array();
+	$sub = mongabay_sub();
+	if (!$sec) $sec = 'list';
 
-if ($sec == 'list') {
-	if ($sub=='kidsnews') $sectitle = '<span class="news-category">'.__('Kids','mongabay-theme').'</span> ';
-	elseif ($sub=='wildtech') $sectitle = '<span class="news-category">'.__('Wildlife Tech','mongabay-theme').'</span> ';
-	else $sectitle = '';
+	if ($sec == 'list' && $c1 != 'wildtech') {
+		if ($sub=='kidsnews') $sectitle = '<span class="news-category">'.__('Kids','mongabay-theme').'</span> ';
+		elseif ($sub=='wildtech') $sectitle = '<span class="news-category">'.__('Wildlife Tech','mongabay-theme').'</span> ';
+		else $sectitle = '';
 
-	if (!empty($c1) && !empty($c2)) { // 2 items are set
-		$items1 = get_terms(array('topic','location'), array('slug' => $c1));
-		$items2 = get_terms(array('topic','location'), array('slug' => $c2));
-		if (!$items1) {
-			$redirect= mongabay_prot().'news.'.mongabay_domain();
+		if (!empty($c1) && !empty($c2)) { // 2 items are set
+			$items1 = get_terms(array('topic','location'), array('slug' => $c1));
+			$items2 = get_terms(array('topic','location'), array('slug' => $c2));
+			if (!$items1) {
+				$redirect= mongabay_prot().'news.'.mongabay_domain();
+			}
+			$item1 = reset($items1);	
+			if (!$items2) {
+				$redirect= mongabay_prot().'news.'.mongabay_domain().'/list/'.$item1->slug;
+			}
+			$item2 = reset($items2);
+			
+			// reorder - topic has to be first
+			if ($item1->taxonomy=='location' && $item2->taxonomy=='topic') {
+				$redirect= mongabay_prot().'news.'.mongabay_domain().'/list/'.$item2->slug.'/'.$item1->slug;
+			}
+		
+			if ($item1->taxonomy == $item2->taxonomy)  $title = $sectitle.'<em class="em-'.$item1->taxonomy.'">'.$item1->name.'</em> '.__('and','mongabay-theme').' <em class="em-'.$item2->taxonomy.'">'.$item2->name.'</em> '.__('News','mongabay-theme');
+			else  $title = __('News: ','mongabay-theme').$sectitle.'<em class="em-'.$item1->taxonomy.'">'.$item2->name.' / </em><em class="em-'.$item2->taxonomy.'">'.$item1->name.'</em> ';
+			
+			$img_url1 = mb_termmeta($item1->term_id,'cover_image_url');
+			if ($img_url1) $img1 = '<img src="'.$img_url1.'" alt="'.strip_tags($title).'" />';
+			$head1 = '<div class="section-news-header-left">'.(isset($img1)?$img1:'').$item1->description.'</div>';
+			
+			$img_url2 = mb_termmeta($item2->term_id,'cover_image_url');
+			if ($img_url2) $img2 = '<img src="'.$img_url2.'" alt="'.strip_tags($title).'" />';
+			$head2 = '<div class="section-news-header-right">'.(isset($img2)?$img2:'').$item2->description.'</div>';
+			
+			$head = $head1.$head2;
+			$classes = 'section-news-double';
+			$htitle = strip_tags($title);
+			$tax_query = array('relation' => 'AND',
+				array('taxonomy' => $item1->taxonomy,'field' => 'slug','terms' => $item1->slug),
+				array('taxonomy' => $item2->taxonomy,'field' => 'slug','terms' => $item2->slug));
+			
 		}
-		$item1 = reset($items1);	
-		if (!$items2) {
-			$redirect= mongabay_prot().'news.'.mongabay_domain().'/list/'.$item1->slug;
+		
+		if (!empty($c1) && empty($c2)) {
+			$items = get_terms(array('topic','location'), array('slug' => $c1));
+			if (!$items) {
+				$redirect= mongabay_prot().'news.'.mongabay_domain();
+			} else {
+				$item = reset($items);		
+				$title = $sectitle.'<em>'.$item->name.'</em> '.__('News','mongabay-theme');
+				$img_url = mb_termmeta($item->term_id,'cover_image_url');
+				if ($img_url) $img = '<img src="'.$img_url.'" alt="'.strip_tags($title).'" />';
+				$head = (isset($img)?$img:'').$item->description;
+				$classes = 'section-news-'.$item->taxonomy;
+				$htitle = strip_tags($title);
+				$tax_query = array(array('taxonomy' => $item->taxonomy,'field' => 'slug','terms' => $item->slug));
+			}
+			
 		}
-		$item2 = reset($items2);
 		
-		// reorder - topic has to be first
-		if ($item1->taxonomy=='location' && $item2->taxonomy=='topic') {
-			$redirect= mongabay_prot().'news.'.mongabay_domain().'/list/'.$item2->slug.'/'.$item1->slug;
+		if (empty($c1)) { // error or general listing page
+			$classes = 'section-news-landing';
+			if ($sub=='kidsnews') {
+				$title = __('<em>Environmental</em> Headlines for Kids','mongabay-theme');
+				$head = __('Mongabay Kids is here to help children to learn about environment, rainforests and conservation.','mongabay-theme');
+			}
+			elseif ($sub=='wildtech') {
+				$title = __('<em>Wildtech</em> Headlines','mongabay-theme');
+				$head = __('Wildtech, a joint initiative of Mongabay, RESOLVE’s Biodiversity and Wildlife Solutions program, and the World Resources Institute (WRI), intends to help accelerate the flow of information among scientists, forest and wildlife managers, technology innovators, and interested groups and catalyze the development and application of technologies for forest and wildlife conservation.','mongabay-theme');
+			}
+			else {
+				$title = __('<em>Environmental</em> Headlines','mongabay-theme');
+				$head = __('Mongabay, <b>founded in 1999</b>, seeks to raise interest in and appreciation of <b>wild lands and wildlife</b>,  aims to be your best source of <b>tropical rainforest conservation and environmental science news</b>.','mongabay-theme');
+			}
 		}
-	
-		if ($item1->taxonomy == $item2->taxonomy)  $title = $sectitle.'<em class="em-'.$item1->taxonomy.'">'.$item1->name.'</em> '.__('and','mongabay-theme').' <em class="em-'.$item2->taxonomy.'">'.$item2->name.'</em> '.__('News','mongabay-theme');
-		else  $title = __('News: ','mongabay-theme').$sectitle.'<em class="em-'.$item1->taxonomy.'">'.$item2->name.' / </em><em class="em-'.$item2->taxonomy.'">'.$item1->name.'</em> ';
 		
-		$img_url1 = mb_termmeta($item1->term_id,'cover_image_url');
-		if ($img_url1) $img1 = '<img src="'.$img_url1.'" alt="'.strip_tags($title).'" />';
-		$head1 = '<div class="section-news-header-left">'.(isset($img1)?$img1:'').$item1->description.'</div>';
-		
-		$img_url2 = mb_termmeta($item2->term_id,'cover_image_url');
-		if ($img_url2) $img2 = '<img src="'.$img_url2.'" alt="'.strip_tags($title).'" />';
-		$head2 = '<div class="section-news-header-right">'.(isset($img2)?$img2:'').$item2->description.'</div>';
-		
-		$head = $head1.$head2;
-		$classes = 'section-news-double';
-		$htitle = strip_tags($title);
-		$tax_query = array('relation' => 'AND',
-			array('taxonomy' => $item1->taxonomy,'field' => 'slug','terms' => $item1->slug),
-			array('taxonomy' => $item2->taxonomy,'field' => 'slug','terms' => $item2->slug));
+		//if ($sub=='kidsnews') $meta_query = array(array('key' => 'post_category', 'value' => 'kids', 'compare' => '='));
+		//if ($sub=='wildtech') $meta_query = array(array('key' => 'post_category', 'value' => 'wildtech', 'compare' => '='));
 		
 	}
-	
-	if (!empty($c1) && empty($c2)) {
-		$items = get_terms(array('topic','location'), array('slug' => $c1));
+	elseif ($sec == 'list' && $c1 == 'wildtech') {
+		$meta_query = array(array('key' => 'news_category', 'value' => 'wildtech', 'compare' => '='));
+		$tax_query = '';
+		$title = __('<em>Wildtech</em> News','mongabay-theme');
+	}
+	elseif ($sec == 'series') {
+		$items = get_terms(array('serial'), array('slug' => $c1));
 		if (!$items) {
 			$redirect= mongabay_prot().'news.'.mongabay_domain();
 		} else {
-			$item = reset($items);		
-			$title = $sectitle.'<em>'.$item->name.'</em> '.__('News','mongabay-theme');
+			$item = reset($items);	
+			$title = __('Mongabay Series','mongabay-theme').': <em>'.$item->name.'</em> ';
 			$img_url = mb_termmeta($item->term_id,'cover_image_url');
 			if ($img_url) $img = '<img src="'.$img_url.'" alt="'.strip_tags($title).'" />';
 			$head = (isset($img)?$img:'').$item->description;
-			$classes = 'section-news-'.$item->taxonomy;
+			$classes = 'section-news-series';
+			$htitle = $item->name;
+			$tax_query = array(array('taxonomy' => 'serial','field' => 'slug','terms' => $item->slug));
+		}
+
+	}
+	elseif ($sec == 'author') {
+		$items = get_terms(array('author'), array('slug' => $c1));
+		if (!$items) {
+			$redirect= mongabay_prot().'news.'.mongabay_domain();
+		} else {
+			$item = reset($items);	
+			$title = __('Articles by','mongabay-theme').' <em>'.$item->name.'</em> ';
+			$img_url = mb_termmeta($item->term_id,'cover_image_url');
+			if ($img_url) $img = '<img src="'.$img_url.'" alt="'.strip_tags($title).'" />';
+			$head = (isset($img)?$img:'').$item->description;
+			$classes = 'section-news-author';
 			$htitle = strip_tags($title);
-			$tax_query = array(array('taxonomy' => $item->taxonomy,'field' => 'slug','terms' => $item->slug));
-		}
-		
-	}
-	
-	if (empty($c1)) { // error or general listing page
-		$classes = 'section-news-landing';
-		if ($sub=='kidsnews') {
-			$title = __('<em>Environmental</em> Headlines for Kids','mongabay-theme');
-			$head = __('Mongabay Kids is here to help children to learn about environment, rainforests and conservation.','mongabay-theme');
-		}
-		elseif ($sub=='wildtech') {
-			$title = __('<em>Wildtech</em> Headlines','mongabay-theme');
-			$head = __('Wildtech, a joint initiative of Mongabay, RESOLVE’s Biodiversity and Wildlife Solutions program, and the World Resources Institute (WRI), intends to help accelerate the flow of information among scientists, forest and wildlife managers, technology innovators, and interested groups and catalyze the development and application of technologies for forest and wildlife conservation.','mongabay-theme');
-		}
-		else {
-			$title = __('<em>Environmental</em> Headlines','mongabay-theme');
-			$head = __('Mongabay, <b>founded in 1999</b>, seeks to raise interest in and appreciation of <b>wild lands and wildlife</b>,  aims to be your best source of <b>tropical rainforest conservation and environmental science news</b>.','mongabay-theme');
+			$tax_query = array(array('taxonomy' => 'author','field' => 'slug','terms' => $item->slug));
 		}
 	}
 	
-	if ($sub=='kidsnews') $meta_query = array(array('key' => 'post_category', 'value' => 'kids', 'compare' => '='));
-	if ($sub=='wildtech') $meta_query = array(array('key' => 'post_category', 'value' => 'wildtech', 'compare' => '='));
-	
-} elseif ($sec == 'series') {
-	$items = get_terms(array('serial'), array('slug' => $c1));
-	if (!$items) {
-		$redirect= mongabay_prot().'news.'.mongabay_domain();
-	} else {
-		$item = reset($items);	
-		$title = __('Mongabay Series','mongabay-theme').': <em>'.$item->name.'</em> ';
-		$img_url = mb_termmeta($item->term_id,'cover_image_url');
-		if ($img_url) $img = '<img src="'.$img_url.'" alt="'.strip_tags($title).'" />';
-		$head = (isset($img)?$img:'').$item->description;
-		$classes = 'section-news-series';
-		$htitle = $item->name;
-		$tax_query = array(array('taxonomy' => 'serial','field' => 'slug','terms' => $item->slug));
-	}
-
-} elseif ($sec == 'author') {
-	$items = get_terms(array('author'), array('slug' => $c1));
-	if (!$items) {
-		$redirect= mongabay_prot().'news.'.mongabay_domain();
-	} else {
-		$item = reset($items);	
-		$title = __('Articles by','mongabay-theme').' <em>'.$item->name.'</em> ';
-		$img_url = mb_termmeta($item->term_id,'cover_image_url');
-		if ($img_url) $img = '<img src="'.$img_url.'" alt="'.strip_tags($title).'" />';
-		$head = (isset($img)?$img:'').$item->description;
-		$classes = 'section-news-author';
-		$htitle = strip_tags($title);
-		$tax_query = array(array('taxonomy' => 'author','field' => 'slug','terms' => $item->slug));
-	}
-}
-
-/* Set custom title */
-// if (!empty($htitle)) {
-// 	global $header_title;
-// 	$header_title = $htitle;
-// 	$htitle_func =  function($title, $sep) { global $header_title; return $header_title.' '.$sep.' '.get_bloginfo( 'name', 'display' ); };
-// 	add_filter( 'wp_title', $htitle_func, 10, 2 );
-// }
-
+	/* Set custom title */
+	// if (!empty($htitle)) {
+	// 	global $header_title;
+	// 	$header_title = $htitle;
+	// 	$htitle_func =  function($title, $sep) { global $header_title; return $header_title.' '.$sep.' '.get_bloginfo( 'name', 'display' ); };
+	// 	add_filter( 'wp_title', $htitle_func, 10, 2 );
+	// }
 ?>
 <?php get_header(); ?>
 <?php
-global $block_id;
-$block_id++;	
+	global $block_id;
+	$block_id++;	
 
-$atts = array(
-	'title' 					=> '',
-	'big_title'		 		=> '',
-	'primary_title' 			=> '',
-	'second_title'				=> '',
-	'title_link' 				=> '',
-	'title_align' 				=> '',
-	'big_post' 				=> 'yes',
-	'first_cat' 				=> 'yes',
-	'star'					 	=> 'yes',
-	'big_excerpt' 				=> 36,
-	'small_excerpt' 			=> 21,
-	'offset' 					=> 0,
-	
-	// Ads
-	'ad' 						=> '',
-	'codes' 					=> '',
-	'codes_position' 			=> '',
-	'encode' 					=> '1',
-	
-	// wp_query
-	'post_status'				=> 'publish',
-	'post_type' 				=> 'post',
-	'category_name'         	=> '',
-	'tag'               		=> '',
-	'posts_per_page'         	=> 20,
-	'ignore_sticky_posts'    	=> true,
-	'orderby'                	=> '',
-	'order'                  	=> '',
-	'nav'						=> 'ajax',
-	'global_query'				=> '0',
-	
-	// related posts
-	'related_posts' 			=> '',
-	'related_by' 				=> '',
-	
-	//'def_sidebar'				=> $GLOBALS['sidebar_layout'],
-	'is_ajax'					=> 0,
-	'block_id'					=> 'one'.$block_id,
-	
-	// our meta query
-	'meta_query' => $meta_query,
-	
-	// our tax query
-	'tax_query' => $tax_query,
-);
+	$atts = array(
+		'title' 					=> '',
+		'big_title'		 		=> '',
+		'primary_title' 			=> '',
+		'second_title'				=> '',
+		'title_link' 				=> '',
+		'title_align' 				=> '',
+		'big_post' 				=> 'yes',
+		'first_cat' 				=> 'yes',
+		'star'					 	=> 'yes',
+		'big_excerpt' 				=> 36,
+		'small_excerpt' 			=> 21,
+		'offset' 					=> 0,
+		
+		// Ads
+		'ad' 						=> '',
+		'codes' 					=> '',
+		'codes_position' 			=> '',
+		'encode' 					=> '1',
+		
+		// wp_query
+		'post_status'				=> 'publish',
+		'post_type' 				=> 'post',
+		'category_name'         	=> '',
+		'tag'               		=> '',
+		'posts_per_page'         	=> 20,
+		'ignore_sticky_posts'    	=> true,
+		'orderby'                	=> '',
+		'order'                  	=> '',
+		'nav'						=> 'ajax',
+		'global_query'				=> '0',
+		
+		// related posts
+		'related_posts' 			=> '',
+		'related_by' 				=> '',
+		
+		//'def_sidebar'				=> $GLOBALS['sidebar_layout'],
+		'is_ajax'					=> 0,
+		'block_id'					=> 'one'.$block_id,
+		
+		// our meta query
+		'meta_query' => $meta_query,
+		
+		// our tax query
+		'tax_query' => $tax_query,
+	);
 	
 ?>
 <div id="section-news-wrap" class="<?php echo $classes; ?>">

@@ -59,7 +59,7 @@
 </head>
 
 <?php if (mongabay_sub()=='images' || is_page_template( 'templates/template-simple.php' )) $GLOBALS['sidebar_layout'] = 'right'; ?>
-<body <?php body_class(array($GLOBALS['responsive'],'subdomain-'.mongabay_sub())); ?> itemscope="itemscope" itemtype="<?php echo rd_ssl(); ?>://schema.org/WebPage"<?php echo $GLOBALS['theme_bg']; ?>>
+<body <?php body_class(array($GLOBALS['responsive'],'subdomain-'.mongabay_sub(),get_post_meta(get_the_ID(),"news_category",true))); ?> itemscope="itemscope" itemtype="<?php echo rd_ssl(); ?>://schema.org/WebPage"<?php echo $GLOBALS['theme_bg']; ?>>
 	<?php if (mongabay_is_legacy_post()): ?>
 		<div id="fb-root"></div>
 		<script>
@@ -151,7 +151,7 @@
 		$sticky = ' '.$GLOBALS['header_style'];
 	}
 ?>
-<header role="banner" class="header-wrap clearfix<?php echo $sticky; ?>" itemscope="itemscope" itemtype="<?php echo rd_ssl(); ?>://schema.org/WPHeader">
+<header role="banner" class="header-wrap clearfix<?php echo $sticky;?>" itemscope="itemscope" itemtype="<?php echo rd_ssl(); ?>://schema.org/WPHeader">
 <?php
 	if ($GLOBALS['header_style'] == 'header5'){
 		get_template_part('parts/header5');
@@ -222,7 +222,6 @@
 	<?php
 			$post = get_post();
 			$post_id = $post -> ID;
-			$post_cat = get_the_category($post_id);
 			$post_type = $post->post_type;
 			if($GLOBALS['sidebar_layout'] == 'left' || $GLOBALS['sidebar_layout'] == 'double') {
 				get_sidebar( 'left' ); 
@@ -242,7 +241,7 @@
 			}					                            
 		if(is_single()){
 	?>
-<div id="post-<?php echo $post_id; ?>" <?php post_class('single-post category-'.$post_cat); ?> itemscope="itemscope" itemtype="<?php echo rd_ssl(); ?>://schema.org/Article">
+<div id="post-<?php echo $post_id; ?>" <?php post_class('single-post'); ?> itemscope="itemscope" itemtype="<?php echo rd_ssl(); ?>://schema.org/Article">
 	<div class="header-tags">
 	  <?php
 		$locations =  array_slice(wp_get_post_terms($post_id, 'location' , array('orderby' => 'count', 'order' => 'DESC')),0,4);
@@ -314,7 +313,10 @@
 	?>
 <?php
 	$featured = get_post_meta(get_the_ID(),"featured_as",true);
-	if ( $featured !=='featured'){
-	echo '<main role="main" class="main-grid main-content '.$GLOBALS['sidebar_layout'].'-main-content '.(is_single()?'main-singlepost':'').'">';
+	if ( is_page() || $tax1 ){
+		echo '<main role="main" class="main-grid main-content '.$GLOBALS['sidebar_layout'].'-main-content">';
+	}
+	elseif ( is_single() && $featured !=='featured') {
+		echo '<main role="main" class="main-grid main-content '.$GLOBALS['sidebar_layout'].'-main-content main-singlepost">';
 	}
 ?>

@@ -1281,6 +1281,10 @@
         display: inline-block;
         float: none;
     }
+    .bombver.bombnav > li > a, .main-menu-tog .menu-reg-log.righttog a{
+        font-size: 14px;
+        padding: 7px;
+    }
 }
 @media screen and (max-width:767px)
 {
