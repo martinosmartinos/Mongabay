@@ -20,10 +20,10 @@
 	$tax1 = get_query_var('nc1');
 	$tax2 = get_query_var('nc2');
 		if ($tax1 && !$tax2) {
-			echo ucfirst($tax1).' News';
+			echo ucfirst(str_replace("-", " ", $tax1)).' News';
 		}
 		elseif ($tax1 && $tax2) {
-			echo ucfirst($tax2).' and '.ucfirst($tax1).' News';
+			echo ucfirst(str_replace("-", " ", $tax2)).' and '.ucfirst(str_replace("-", " ", $tax1)).' News';
 		}
 		elseif (!function_exists('_wp_render_title_tag')) {
 			wp_title('');
@@ -230,7 +230,7 @@
 			if ( is_author() ) {
 				$scope = ' itemprop="mainContentOfPage" itemscope="itemscope" itemtype="'. rd_ssl() .'://schema.org/ProfilePage"';
 			}
-			else if (is_single() || is_archive() || is_home() || is_front_page() || is_page_template( 'templates/template-home.php' ) ) {
+			else if (is_single() || is_archive() || is_home() || is_front_page()) {
 				$scope = ' itemprop="mainContentOfPage" itemscope="itemscope" itemtype="'. rd_ssl() .'://schema.org/Article"';
 			}
 			else if (is_page() || is_attachment()) {
@@ -273,6 +273,8 @@
 			if (get_post_format() =='aside' && in_array('featured', $featured)) {
 				echo '<div class="title-outer"><div class="title-inner"><span>'.content_single_title().'</span>';
 				if (!empty($translator) && is_array($translator)) {
+					echo content_meta_complete_date();
+					echo mongabay_authorslink(get_the_ID());
 					echo '<div class="translatorline"><span>'.__('Translated by','mongabay-theme').'</span> <a href="'.mongabay_url('author',$translator[slug]).'">'.$translator[name].'</a></div>';
 				}
 				else {

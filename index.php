@@ -130,6 +130,7 @@
 	// 	$htitle_func =  function($title, $sep) { global $header_title; return $header_title.' '.$sep.' '.get_bloginfo( 'name', 'display' ); };
 	// 	add_filter( 'wp_title', $htitle_func, 10, 2 );
 	// }
+	//var_dump($meta_query); var_dump($tax_query);
 ?>
 <?php get_header(); ?>
 <?php

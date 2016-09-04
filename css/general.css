@@ -6,6 +6,9 @@
 *	 footer, sidebars and such.
 *
 */
+article {
+	overflow: auto;
+}
 .single-format-video .videobox {
 	display: block;
 }
