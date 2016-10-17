@@ -242,22 +242,6 @@
 		if(is_single()){
 	?>
 <div id="post-<?php echo $post_id; ?>" <?php post_class('single-post'); ?> itemscope="itemscope" itemtype="<?php echo rd_ssl(); ?>://schema.org/Article">
-	<div class="header-tags">
-	  <?php
-		$locations =  array_slice(wp_get_post_terms($post_id, 'location' , array('orderby' => 'count', 'order' => 'DESC')),0,4);
-		$n=0;
-		foreach ($locations as $location) {
-			$slug = $location->slug;
-			echo '<a class="header-tag header-tag-location '.((!$n++)?'header-tag-first':'').'" href="'.mongabay_url('location'.(get_post_type()=='image'?'-image':''),$slug).'"><span itemprop="articleSection">'.$location->name.'</span></a>';
-		}
-		$topics =  array_slice(wp_get_post_terms($post_id, 'topic' , array('orderby' => 'count', 'order' => 'DESC')),0,4);
-		$i=0;
-		foreach ($topics as $topic) {
-			$slug = $topic->slug;
-			echo '<a class="header-tag header-tag-topic '.((!$i++)?'header-tag-first':'').'"  href="'.mongabay_url('topic'.(get_post_type()=='image'?'-image':''),$slug).'"><span itemprop="articleSection">'.$topic->name.'</span></a>';
-		}
-		?>
-	</div>
 	<?php if (get_post_type()=='post'): ?>
 	<div class="subheader <?php echo ((get_post_meta(get_the_ID(),'mongabay_post_legacy_status',true)=='yes')?'subheader-legacy':'subheader-new'); ?>">
   
@@ -270,13 +254,25 @@
 		<?php
 			$featured = get_post_meta(get_the_ID(),"featured_as");
 			$translator = get_post_meta(get_the_ID(),"translated_by",true);
+			$adaptor = get_post_meta(get_the_ID(),"adapted_by",true);
+			$translated_adapted = get_post_meta(get_the_ID(),"translated_adapted",true);
 			if (get_post_format() =='aside' && in_array('featured', $featured)) {
 				echo '<div class="title-outer"><div class="title-inner"><span>'.content_single_title().'</span>';
-				if (!empty($translator) && is_array($translator)) {
+				if (!empty(array_filter($translator))) {
 					echo content_meta_complete_date();
 					echo mongabay_authorslink(get_the_ID());
-					echo '<div class="translatorline"><span>'.__('Translated by','mongabay-theme').'</span> <a href="'.mongabay_url('author',$translator[slug]).'">'.$translator[name].'</a></div>';
+
+					if ($translated_adapted == 'adapted' && !empty(array_filter($adaptor))) {
+						$string_title = 'Adapted by';
+						$translator_adaptor = $adaptor;
+					}
+					elseif (!empty(array_filter($translator))) {
+						$string_title = 'Translated by';
+						$translator_adaptor = $translator;
+					}
+					echo '<div class="translatorline"><span>'.__( $string_title ,'mongabay-theme').'</span> <a href="'.mongabay_url('author',$translator_adaptor[slug]).'">'.$translator_adaptor[name].'</a></div>';
 				}
+
 				else {
 					echo '<div class="authorportlet">';
 					echo content_meta_complete_date();
@@ -286,15 +282,23 @@
 				echo '<h2 class="tagline" itemprop="description">'.get_post_meta(get_the_ID(),"mog_tagline",true).'</h2>';
 				echo '</div></div>';
 			}
+
 			else {
 				echo content_single_title();
 				echo '<div class="authorportlet">';
 				echo content_meta_complete_date();
 				echo mongabay_authorslink(get_the_ID());
 				echo '</div>';
-				if (!empty($translator) && is_array($translator)) {
-					echo '<div class="translatorline"><span>'.__('Translated by','mongabay-theme').'</span> <a href="'.mongabay_url('author',$translator[slug]).'">'.$translator[name].'</a></div>';
+
+				if ($translated_adapted == 'adapted' && !empty(array_filter($adaptor))) {
+					$string_title = 'Adapted by';
+					$translator_adaptor = $adaptor;
 				}
+				elseif (!empty(array_filter($translator))) {
+					$translator_adaptor = $translator;
+					$string_title = 'Translated by';
+				}
+				echo '<div class="translatorline"><span>'.__( $string_title ,'mongabay-theme').'</span> <a href="'.mongabay_url('author',$translator_adaptor[slug]).'">'.$translator_adaptor[name].'</a></div>';
 				echo '<h2 class="tagline" itemprop="description">'.get_post_meta(get_the_ID(),"mog_tagline",true).'</h2>';
 			}
 		?>
