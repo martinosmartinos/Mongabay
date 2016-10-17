@@ -210,4 +210,45 @@ function open_close_px_content()
         <?php
     }
 }
-add_action("admin_print_footer_scripts", "open_close_px_content");
+add_action('admin_print_footer_scripts', 'open_close_px_content');
+
+
+/*Conditional logic to show or hide translated_by/ adapted_by POD fields*/
+function trada_conditional_logic() {
+
+?>  
+     
+    <style type='text/css'>
+        .pods-form-ui-row-name-translated-by, 
+        .pods-form-ui-row-name-adapted-by {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        var $ = jQuery;
+        $(document).ready(function(){
+            $('select#pods-form-ui-pods-meta-translated-adapted').change(function(){
+                $(this).find('option:selected').each(function(){
+                    if($(this).attr("value")=="translated"){
+                        $('.pods-form-ui-row-name-adapted-by').hide();
+                        $('.pods-form-ui-row-name-translated-by').show();
+                    }
+                    else if($(this).attr("value")=="adapted"){
+                        $('.pods-form-ui-row-name-translated-by').hide();
+                        $('.pods-form-ui-row-name-adapted-by').show();
+                        
+                    }
+                    else{
+                        $('.pods-form-ui-row-name-adapted-by').hide();
+                        $('.pods-form-ui-row-name-adapted-by').hide();
+                    }
+                });
+            }).change();
+        });
+    </script>
+    
+<?php
+
+}
+
+add_action('admin_head', 'trada_conditional_logic');
