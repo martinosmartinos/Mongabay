@@ -60,6 +60,7 @@ if (have_posts()) : while (have_posts()) : the_post(); $post_id=get_the_ID(); se
           
           <div class="entry-meta-below-content">
           		<p itemprop="publisher" itemscope itemtype="http://schema.org/Person"><?php _e('Article published by','mongabay-theme'); ?> <span itemprop="name"><?php the_author(); ?></span> <?php _e('on','mongabay-theme'); ?> <?php the_date(); ?>.</p>
+          		<?php echo do_shortcode ('[print-me target=".entryheader, .mogbullets, article"]');?>
               <div class="all-topics">
 				<h5>Article Topics:</h5>
 				<?php
