@@ -74,9 +74,6 @@
 			?>
 		   </div>
 		</div>
-		<div class="sharebox">
-			<?php echo do_shortcode('[sharify]'); ?>
-		</div>
 	</div>
 		
 	<?php endif; ?> 
