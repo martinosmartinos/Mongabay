@@ -258,15 +258,15 @@
 			$translated_adapted = get_post_meta(get_the_ID(),"translated_adapted",true);
 			if (get_post_format() =='aside' && in_array('featured', $featured)) {
 				echo '<div class="title-outer"><div class="title-inner"><span>'.content_single_title().'</span>';
-				if (!empty(array_filter($translator))) {
+				if (!empty($translator)) {
 					echo content_meta_complete_date();
 					echo mongabay_authorslink(get_the_ID());
 
-					if ($translated_adapted == 'adapted' && !empty(array_filter($adaptor))) {
+					if ($translated_adapted == 'adapted' && !empty($adaptor)) {
 						$string_title = 'Adapted by';
 						$translator_adaptor = $adaptor;
 					}
-					elseif (!empty(array_filter($translator))) {
+					elseif (!empty($translator)) {
 						$string_title = 'Translated by';
 						$translator_adaptor = $translator;
 					}
@@ -290,11 +290,11 @@
 				echo mongabay_authorslink(get_the_ID());
 				echo '</div>';
 
-				if ($translated_adapted == 'adapted' && !empty(array_filter($adaptor))) {
+				if ($translated_adapted == 'adapted' && !empty($adaptor)) {
 					$string_title = 'Adapted by';
 					$translator_adaptor = $adaptor;
 				}
-				elseif (!empty(array_filter($translator))) {
+				elseif (!empty($translator)) {
 					$translator_adaptor = $translator;
 					$string_title = 'Translated by';
 				}
